@@ -68,6 +68,7 @@ flutter:
     - lib/assets/images/d20.png
     - lib/assets/images/sb.png
     - lib/assets/images/rd.png
+    - lib/assets/images/spb.png
     - lib/assets/images/war.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
