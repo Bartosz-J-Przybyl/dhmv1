@@ -24,9 +24,9 @@ class _MyAppBarState extends State<BottomTabBar> {
       body: _pageNo[selectedpage],
       bottomNavigationBar: CurvedNavigationBar(
         index: selectedpage,
-        backgroundColor: Colors.teal,
-        buttonBackgroundColor: const Color.fromARGB(255, 10, 207, 188),
-        color: const Color.fromARGB(255, 10, 207, 188),
+        backgroundColor: const Color.fromARGB(255, 0, 58, 52),
+        buttonBackgroundColor: const Color.fromARGB(255, 3, 116, 104),
+        color: const Color.fromARGB(255, 3, 116, 104),
         height: 55,
         items: const <Widget>[
           Image(

@@ -1,4 +1,4 @@
-package com.example.dhmv1
+package com.bjp.dhmv1
 
 import io.flutter.embedding.android.FlutterActivity
 

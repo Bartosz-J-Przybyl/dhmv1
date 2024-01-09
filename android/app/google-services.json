@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "219924415709",
+    "project_id": "dungeon-hero-maker",
+    "storage_bucket": "dungeon-hero-maker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219924415709:android:92df3d7aea9fdf616ec734",
+        "android_client_info": {
+          "package_name": "com.bjp.dhmv1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDhmscsZkirHhM2Lx6YQQ3afUmrSf289Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
