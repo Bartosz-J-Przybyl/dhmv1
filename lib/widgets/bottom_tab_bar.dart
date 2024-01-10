@@ -30,7 +30,7 @@ class _MyAppBarState extends State<BottomTabBar> {
         height: 55,
         items: const <Widget>[
           Image(
-            image: AssetImage("lib/assets/images/sb.png"),
+            image: AssetImage("lib/assets/images/spb.png"),
             width: 45,
             fit: BoxFit.scaleDown,
           ),

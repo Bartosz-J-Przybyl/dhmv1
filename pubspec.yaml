@@ -70,6 +70,8 @@ flutter:
     - lib/assets/images/rd.png
     - lib/assets/images/spb.png
     - lib/assets/images/war.png
+    - lib/assets/images/dr.png
+    - lib/assets/images/wiz.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
