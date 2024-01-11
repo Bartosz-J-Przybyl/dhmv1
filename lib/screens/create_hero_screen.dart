@@ -32,12 +32,12 @@ class _CreateHeroState extends State<CreateHerocreen> {
   var herolvl = "";
   var heroclass = "";
   var heroclassimage = "";
-  var strength = "";
-  var dexterity = "";
-  var constitution = "";
-  var intelligence = "";
-  var wisdom = "";
-  var charisma = "";
+  int strength = 10;
+  int dexterity = 10;
+  int constitution = 10;
+  int intelligence = 10;
+  int wisdom = 10;
+  int charisma = 10;
 
   var _selectedClass = categories[Class.warior]!;
   final _playern = List<String>.generate(20, (i) => ' ${i + 1}');
@@ -83,8 +83,7 @@ class _CreateHeroState extends State<CreateHerocreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding:
-              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          padding: const EdgeInsets.all(8),
           child: Form(
             key: _formKey,
             child: Column(
@@ -116,7 +115,7 @@ class _CreateHeroState extends State<CreateHerocreen> {
                       child: DropdownButtonFormField(
                         isExpanded: true,
                         decoration: const InputDecoration(
-                          labelText: "Select Hero lvl",
+                          labelText: "Hero Level",
                           labelStyle: TextStyle(
                             fontSize: 20,
                           ),
@@ -148,7 +147,7 @@ class _CreateHeroState extends State<CreateHerocreen> {
                       child: DropdownButtonFormField(
                         isExpanded: true,
                         decoration: const InputDecoration(
-                          labelText: "Select Hero class",
+                          labelText: "Hero Class",
                           labelStyle: TextStyle(
                             fontSize: 20,
                           ),
@@ -191,107 +190,88 @@ class _CreateHeroState extends State<CreateHerocreen> {
                 ),
                 const Divider(height: 30),
                 EnterValueClass(
-                  text: "Your Strength atribute:",
-                  color: Colors.red,
-                  onchanged: (value) {
-                    setState(() {
-                      strength = value;
-                    });
+                  callback: (value) {
+                    strength = value;
                   },
+                  text: "Your Strength :",
+                  color: Colors.red,
                   textEditingController: _strengthcontrrol,
                 ),
                 const Divider(height: 30),
                 EnterValueClass(
-                  text: "Your Dexterity atribute:",
-                  color: Colors.greenAccent,
-                  onchanged: (value) {
-                    setState(() {
-                      dexterity = value;
-                    });
+                  callback: (value) {
+                    dexterity = value;
                   },
+                  text: "Your Dexterity :",
+                  color: Colors.greenAccent,
                   textEditingController: _dexteritycontrrol,
                 ),
                 const Divider(height: 30),
                 EnterValueClass(
-                  text: "Your Constitution atribute:",
-                  color: Colors.orangeAccent,
-                  onchanged: (value) {
-                    setState(() {
-                      constitution = value;
-                    });
+                  callback: (value) {
+                    constitution = value;
                   },
+                  text: "Your Constitution :",
+                  color: Colors.orangeAccent,
                   textEditingController: _constitutioncontrrol,
                 ),
                 const Divider(height: 30),
                 EnterValueClass(
-                  text: "Your Wisdom atribute:",
-                  color: Colors.blueAccent,
-                  onchanged: (value) {
-                    setState(() {
-                      wisdom = value;
-                    });
+                  callback: (value) {
+                    wisdom = value;
                   },
+                  text: "Your Wisdom :",
+                  color: Colors.blueAccent,
                   textEditingController: _wisdomcontrrol,
                 ),
                 const Divider(height: 30),
                 EnterValueClass(
-                  text: "Your Intelligence atribute:",
-                  color: Colors.deepPurple,
-                  onchanged: (value) {
-                    setState(() {
-                      intelligence = value;
-                    });
+                  callback: (value) {
+                    intelligence = value;
                   },
+                  text: "Your Intelligence :",
+                  color: Colors.yellow,
                   textEditingController: _intelligencecontrrol,
                 ),
                 const Divider(height: 30),
                 EnterValueClass(
-                  text: "Your Charisma atribute:",
-                  color: Colors.yellow,
-                  onchanged: (value) {
-                    setState(() {
-                      charisma = value;
-                    });
+                  callback: (value) {
+                    charisma = value;
                   },
+                  text: "Your Charisma :",
+                  color: Colors.deepPurple,
                   textEditingController: _charismacontrrol,
                 ),
                 const Divider(height: 30),
                 ElevatedButton(
-                  onPressed: heroName.isEmpty ||
-                          herolvl.isEmpty ||
-                          heroclass.isEmpty ||
-                          strength.isEmpty ||
-                          dexterity.isEmpty ||
-                          constitution.isEmpty ||
-                          intelligence.isEmpty ||
-                          wisdom.isEmpty ||
-                          charisma.isEmpty
-                      ? null
-                      : () {
-                          FirebaseFirestore.instance
-                              .collection("heromaker")
-                              .add({
-                            "HeroName": heroName,
-                            "Herolvl": herolvl,
-                            "Class": heroclass,
-                            "ClassImage": heroclassimage,
-                            "Strength": strength,
-                            "Dexterity": dexterity,
-                            "Constitution": constitution,
-                            "Intelligence": intelligence,
-                            "Wisdom": wisdom,
-                            "Charisma": charisma
-                          });
+                  onPressed:
+                      heroName.isEmpty || herolvl.isEmpty || heroclass.isEmpty
+                          ? null
+                          : () {
+                              FirebaseFirestore.instance
+                                  .collection("heromaker")
+                                  .add({
+                                "HeroName": heroName,
+                                "Herolvl": herolvl,
+                                "Class": heroclass,
+                                "ClassImage": heroclassimage,
+                                "Strength": strength,
+                                "Dexterity": dexterity,
+                                "Constitution": constitution,
+                                "Intelligence": intelligence,
+                                "Wisdom": wisdom,
+                                "Charisma": charisma
+                              });
 
-                          widget.onSave();
+                              widget.onSave();
 
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const BottomTabBar(),
-                            ),
-                          );
-                        },
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const BottomTabBar(),
+                                ),
+                              );
+                            },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.teal,
                   ),
