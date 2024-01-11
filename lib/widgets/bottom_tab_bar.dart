@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:dhmv1/screens/hero_maker_screen.dart';
+
 import 'package:flutter/material.dart';
 
 class BottomTabBar extends StatefulWidget {
@@ -12,12 +13,13 @@ class BottomTabBar extends StatefulWidget {
 class _MyAppBarState extends State<BottomTabBar> {
   int selectedpage = 1;
   get primaryColor => null;
-
+  int counter = 0;
   final _pageNo = [
     const Scaffold(),
     const HeroMakerScreen(),
     const Scaffold(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
