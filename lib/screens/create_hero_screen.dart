@@ -39,7 +39,7 @@ class _CreateHeroState extends State<CreateHerocreen> {
   int wisdom = 10;
   int charisma = 10;
 
-  var _selectedClass = categories[Class.warior]!;
+  var _selectedClass = categories[Class.bard]!;
   final _playern = List<String>.generate(20, (i) => ' ${i + 1}');
   String? _selectnumber = "";
   final _formKey = GlobalKey<FormState>();
@@ -83,7 +83,7 @@ class _CreateHeroState extends State<CreateHerocreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(12),
           child: Form(
             key: _formKey,
             child: Column(
@@ -92,8 +92,7 @@ class _CreateHeroState extends State<CreateHerocreen> {
                 TextFormField(
                   maxLength: 50,
                   decoration: const InputDecoration(
-                    label: Text("Hero Name"),
-                    prefixIcon: Icon(Icons.add_reaction),
+                    hintText: "Hero Name",
                   ),
                   validator: (value) {
                     if (value == null ||
@@ -109,18 +108,22 @@ class _CreateHeroState extends State<CreateHerocreen> {
                   },
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
+                    const SizedBox(
+                      width: 50,
+                      child: Text(
+                        "Hero Level",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white54),
+                      ),
+                    ),
                     SizedBox(
-                      width: 150,
+                      width: 50,
                       child: DropdownButtonFormField(
                         isExpanded: true,
-                        decoration: const InputDecoration(
-                          labelText: "Hero Level",
-                          labelStyle: TextStyle(
-                            fontSize: 20,
-                          ),
-                          prefixIcon: Icon(Icons.elevator),
-                        ),
                         value: _selectnumber,
                         items: _playern
                             .map((e) => DropdownMenuItem(
@@ -142,24 +145,27 @@ class _CreateHeroState extends State<CreateHerocreen> {
                     const SizedBox(
                       width: 40,
                     ),
+                    const SizedBox(
+                      width: 50,
+                      child: Text(
+                        "Hero Class",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white54),
+                      ),
+                    ),
                     SizedBox(
-                      width: 175,
+                      width: 150,
                       child: DropdownButtonFormField(
                         isExpanded: true,
-                        decoration: const InputDecoration(
-                          labelText: "Hero Class",
-                          labelStyle: TextStyle(
-                            fontSize: 20,
-                          ),
-                          prefixIcon: Icon(Icons.accessibility_sharp),
-                        ),
                         value: _selectedClass,
                         items: [
                           for (final classcategory in categories.entries)
                             DropdownMenuItem(
                               value: classcategory.value,
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   SizedBox(
                                     width: 35,
