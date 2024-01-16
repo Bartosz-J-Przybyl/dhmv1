@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:dhmv1/widgets/custom_clipper.dart';
 import 'package:flutter/material.dart';
 
@@ -6,14 +7,18 @@ class HeroCard extends StatelessWidget {
   const HeroCard({
     super.key,
     required this.documents,
-    required this.image, required this.text, required this.text2, required this.text3,
+    required this.image,
+    required this.text,
+    required this.text2,
+    required this.text3, required this.race,
   });
 
   final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents;
   final AssetImage image;
   final String text;
-   final String text2;
-   final String text3;
+  final String text2;
+  final String text3;
+   final String race;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -62,24 +67,25 @@ class HeroCard extends StatelessWidget {
               ),
               child: Stack(
                 children: [
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    bottom: 0,
-                    left: 200,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: Image.network(
-                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPybfLpFZwT2uA-WiwVrNqjDMB5pyaAjhQFL_G_jwYVaok6Zm_8XXzQzV8Kdm49L0p22E&usqp=CAU",
-                            ).image),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(8.0)),
-                        color: Colors.transparent,
+                 
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      bottom: 0,
+                      left: 200,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: Image.network(
+                                race,
+                              ).image),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(8.0)),
+                          color: Colors.transparent,
+                        ),
                       ),
                     ),
-                  ),
                   Positioned(
                     left: 0,
                     top: 0,
@@ -128,7 +134,8 @@ class HeroCard extends StatelessWidget {
                                 color: Colors.white,
                               ),
                             ),
-                            Text(text,
+                            Text(
+                              text,
                               // documents[index]["Class"],
 
                               style: const TextStyle(
@@ -152,7 +159,8 @@ class HeroCard extends StatelessWidget {
                                 fontSize: 16,
                               ),
                             ),
-                            Text(text2,
+                            Text(
+                              text2,
                               // documents[index]["HeroName"],
                               style: const TextStyle(
                                 color: Colors.white,
@@ -175,7 +183,8 @@ class HeroCard extends StatelessWidget {
                                 fontSize: 15,
                               ),
                             ),
-                            Text(text3,
+                            Text(
+                              text3,
                               // documents[index]["Herolvl"],
                               style: const TextStyle(
                                 color: Colors.white,

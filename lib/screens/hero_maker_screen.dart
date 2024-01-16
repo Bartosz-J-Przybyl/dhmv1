@@ -269,13 +269,15 @@ class _HeroMakerScreenState extends State<HeroMakerScreen> {
                           ),
                         ),
                         child: HeroCard(
-                            documents: documents,
-                            image: AssetImage(
-                              documents[index]["ClassImage"],
-                            ),
-                            text: documents[index]["Class"],
-                            text2: documents[index]["HeroName"],
-                            text3: documents[index]["Herolvl"]),
+                          documents: documents,
+                          image: AssetImage(
+                            documents[index]["ClassImage"],
+                          ),
+                          text: documents[index]["Class"],
+                          text2: documents[index]["HeroName"],
+                          text3: documents[index]["Herolvl"],
+                          race: documents[index]["RaceImage"],
+                        ),
                       ),
                     ),
                   ),
