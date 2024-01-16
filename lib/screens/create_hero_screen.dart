@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dhmv1/data/class_categories.dart';
+import 'package:dhmv1/data/race_categories.dart';
 import 'package:dhmv1/models/class_category.dart';
+import 'package:dhmv1/models/race_category.dart';
 import 'package:dhmv1/widgets/bottom_tab_bar.dart';
 import 'package:dhmv1/widgets/enter_value.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +21,7 @@ class CreateHerocreen extends StatefulWidget {
 }
 
 class _CreateHeroState extends State<CreateHerocreen> {
-  _CreateHeroState() {
-    _selectnumber = _playern[0];
-  }
+  _CreateHeroState();
   late TextEditingController _strengthcontrrol;
   late TextEditingController _dexteritycontrrol;
   late TextEditingController _constitutioncontrrol;
@@ -29,9 +29,11 @@ class _CreateHeroState extends State<CreateHerocreen> {
   late TextEditingController _wisdomcontrrol;
   late TextEditingController _charismacontrrol;
   var heroName = "";
-  var herolvl = "";
+  var herolvl = "1";
   var heroclass = "";
   var heroclassimage = "";
+  var herorace = "";
+  var heroraceimage = "";
   int strength = 10;
   int dexterity = 10;
   int constitution = 10;
@@ -40,8 +42,8 @@ class _CreateHeroState extends State<CreateHerocreen> {
   int charisma = 10;
 
   var _selectedClass = categories[Class.bard]!;
-  final _playern = List<String>.generate(20, (i) => ' ${i + 1}');
-  String? _selectnumber = "";
+  var _selectedRace = races[Race.human]!;
+
   final _formKey = GlobalKey<FormState>();
   @override
   void initState() {
@@ -113,7 +115,7 @@ class _CreateHeroState extends State<CreateHerocreen> {
                     const SizedBox(
                       width: 50,
                       child: Text(
-                        "Hero Level",
+                        "Hero Race",
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -121,29 +123,31 @@ class _CreateHeroState extends State<CreateHerocreen> {
                       ),
                     ),
                     SizedBox(
-                      width: 50,
+                      width: 80,
                       child: DropdownButtonFormField(
                         isExpanded: true,
-                        value: _selectnumber,
-                        items: _playern
-                            .map((e) => DropdownMenuItem(
-                                  value: e,
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [Text(e)]),
-                                ))
-                            .toList(),
+                        value: _selectedRace,
+                        items: [
+                          for (final racecategory in races.entries)
+                            DropdownMenuItem(
+                              value: racecategory.value,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [Text(racecategory.value.title)],
+                              ),
+                            ),
+                        ],
                         onChanged: (newValue) {
                           setState(() {
-                            _selectnumber = newValue as String;
-                            herolvl = newValue;
+                            _selectedRace = newValue!;
+                            heroraceimage = newValue.image;
+                            herorace = newValue.title;
                           });
                         },
                       ),
                     ),
                     const SizedBox(
-                      width: 40,
+                      width: 30,
                     ),
                     const SizedBox(
                       width: 50,
@@ -156,7 +160,7 @@ class _CreateHeroState extends State<CreateHerocreen> {
                       ),
                     ),
                     SizedBox(
-                      width: 150,
+                      width: 140,
                       child: DropdownButtonFormField(
                         isExpanded: true,
                         value: _selectedClass,
@@ -261,6 +265,8 @@ class _CreateHeroState extends State<CreateHerocreen> {
                                 "Herolvl": herolvl,
                                 "Class": heroclass,
                                 "ClassImage": heroclassimage,
+                                "Race": herorace,
+                                "RaceImage": heroraceimage,
                                 "Strength": strength,
                                 "Dexterity": dexterity,
                                 "Constitution": constitution,
