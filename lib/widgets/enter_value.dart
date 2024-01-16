@@ -5,14 +5,17 @@ class EnterValueClass extends StatelessWidget {
   const EnterValueClass(
       {super.key,
       required this.color,
-      // required this.onchanged,
       required this.text,
       required this.textEditingController,
-      required this.callback});
+      required this.callback,
+      required this.atribute,
+      required this.style});
 
   final Color color;
-  // final void Function(int) onchanged;
+
   final String text;
+  final String atribute;
+  final TextStyle style;
   final TextEditingController textEditingController;
   final ValueSetter<int> callback;
   @override
@@ -29,7 +32,12 @@ class EnterValueClass extends StatelessWidget {
               backgroundColor: color,
               child: Image.asset("lib/assets/images/d20.png"),
             ),
-            Expanded(child: Text(text)),
+            Expanded(
+              child: Text(
+                text + atribute,
+                style: style,
+              ),
+            ),
             Expanded(
               child: CustomCounter(
                 callback: callback,

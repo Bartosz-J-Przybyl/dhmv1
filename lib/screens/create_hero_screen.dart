@@ -123,7 +123,7 @@ class _CreateHeroState extends State<CreateHerocreen> {
                       ),
                     ),
                     SizedBox(
-                      width: 80,
+                      width: 110,
                       child: DropdownButtonFormField(
                         isExpanded: true,
                         value: _selectedRace,
@@ -147,7 +147,7 @@ class _CreateHeroState extends State<CreateHerocreen> {
                       ),
                     ),
                     const SizedBox(
-                      width: 30,
+                      width: 10,
                     ),
                     const SizedBox(
                       width: 50,
@@ -199,59 +199,237 @@ class _CreateHeroState extends State<CreateHerocreen> {
                   ],
                 ),
                 const Divider(height: 30),
-                EnterValueClass(
-                  callback: (value) {
-                    strength = value;
-                  },
-                  text: "Your Strength :",
-                  color: Colors.red,
-                  textEditingController: _strengthcontrrol,
-                ),
+                if (herorace == "Dragonborn" || herorace == "Half-Orc") ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      strength = value;
+                    },
+                    text: "Your Strength :",
+                    color: Colors.red,
+                    textEditingController: _strengthcontrrol,
+                    atribute: "+2",
+                    style: TextStyle(
+                      color: Colors.amber.shade900,
+                    ),
+                  ),
+                } else if (herorace == "Human") ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      strength = value;
+                    },
+                    text: "Your Strength :",
+                    color: Colors.red,
+                    textEditingController: _strengthcontrrol,
+                    atribute: "+1",
+                    style: TextStyle(
+                      color: Colors.amber.shade900,
+                    ),
+                  ),
+                } else ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      strength = value;
+                    },
+                    text: "Your Strength :",
+                    color: Colors.red,
+                    textEditingController: _strengthcontrrol,
+                    atribute: "",
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                },
                 const Divider(height: 30),
-                EnterValueClass(
-                  callback: (value) {
-                    dexterity = value;
-                  },
-                  text: "Your Dexterity :",
-                  color: Colors.greenAccent,
-                  textEditingController: _dexteritycontrrol,
-                ),
+                if (herorace == "Elf" || herorace == "Halfling") ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      dexterity = value;
+                    },
+                    text: "Your Dexterity :",
+                    color: Colors.greenAccent,
+                    textEditingController: _dexteritycontrrol,
+                    atribute: "+2",
+                    style: TextStyle(
+                      color: Colors.amber.shade900,
+                    ),
+                  ),
+                } else if (herorace == "Human") ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      dexterity = value;
+                    },
+                    text: "Your Dexterity :",
+                    color: Colors.greenAccent,
+                    textEditingController: _dexteritycontrrol,
+                    atribute: "+1",
+                    style: TextStyle(
+                      color: Colors.amber.shade900,
+                    ),
+                  ),
+                } else ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      dexterity = value;
+                    },
+                    text: "Your Dexterity :",
+                    color: Colors.greenAccent,
+                    textEditingController: _dexteritycontrrol,
+                    atribute: "",
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                },
                 const Divider(height: 30),
-                EnterValueClass(
-                  callback: (value) {
-                    constitution = value;
-                  },
-                  text: "Your Constitution :",
-                  color: Colors.orangeAccent,
-                  textEditingController: _constitutioncontrrol,
-                ),
+                if (herorace == "Half-Orc" || herorace == "Human") ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      constitution = value;
+                    },
+                    text: "Your Constitution :",
+                    color: Colors.orangeAccent,
+                    textEditingController: _constitutioncontrrol,
+                    atribute: "+1",
+                    style: TextStyle(
+                      color: Colors.amber.shade900,
+                    ),
+                  ),
+                } else if (herorace == "Dwarf") ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      constitution = value;
+                    },
+                    text: "Your Constitution :",
+                    color: Colors.orangeAccent,
+                    textEditingController: _constitutioncontrrol,
+                    atribute: "+2",
+                    style: TextStyle(
+                      color: Colors.amber.shade900,
+                    ),
+                  ),
+                } else ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      constitution = value;
+                    },
+                    text: "Your Constitution :",
+                    color: Colors.orangeAccent,
+                    textEditingController: _constitutioncontrrol,
+                    atribute: "",
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                },
                 const Divider(height: 30),
-                EnterValueClass(
-                  callback: (value) {
-                    wisdom = value;
-                  },
-                  text: "Your Wisdom :",
-                  color: Colors.blueAccent,
-                  textEditingController: _wisdomcontrrol,
-                ),
+                if (herorace == "Human") ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      wisdom = value;
+                    },
+                    text: "Your Wisdom :",
+                    color: Colors.blueAccent,
+                    textEditingController: _wisdomcontrrol,
+                    atribute: "+1",
+                    style: TextStyle(
+                      color: Colors.amber.shade900,
+                    ),
+                  ),
+                } else ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      wisdom = value;
+                    },
+                    text: "Your Wisdom :",
+                    color: Colors.blueAccent,
+                    textEditingController: _wisdomcontrrol,
+                    atribute: "",
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                },
                 const Divider(height: 30),
-                EnterValueClass(
-                  callback: (value) {
-                    intelligence = value;
-                  },
-                  text: "Your Intelligence :",
-                  color: Colors.yellow,
-                  textEditingController: _intelligencecontrrol,
-                ),
+                if (herorace == "Human" || herorace == "Tiefling") ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      intelligence = value;
+                    },
+                    text: "Your Intelligence :",
+                    color: Colors.yellow,
+                    textEditingController: _intelligencecontrrol,
+                    atribute: "+1",
+                    style: TextStyle(
+                      color: Colors.amber.shade900,
+                    ),
+                  ),
+                } else if (herorace == "Gnome") ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      intelligence = value;
+                    },
+                    text: "Your Intelligence :",
+                    color: Colors.yellow,
+                    textEditingController: _intelligencecontrrol,
+                    atribute: "+2",
+                    style: TextStyle(
+                      color: Colors.amber.shade900,
+                    ),
+                  ),
+                } else ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      intelligence = value;
+                    },
+                    text: "Your Intelligence :",
+                    color: Colors.yellow,
+                    textEditingController: _intelligencecontrrol,
+                    atribute: "",
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                },
                 const Divider(height: 30),
-                EnterValueClass(
-                  callback: (value) {
-                    charisma = value;
-                  },
-                  text: "Your Charisma :",
-                  color: Colors.deepPurple,
-                  textEditingController: _charismacontrrol,
-                ),
+                if (herorace == "Dragonborn" ||herorace == "Human") ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      charisma = value;
+                    },
+                    text: "Your Charisma :",
+                    color: Colors.deepPurple,
+                    textEditingController: _charismacontrrol,
+                    atribute: "+1",
+                    style: TextStyle(
+                      color: Colors.amber.shade900,
+                    ),
+                  ),
+                } else if (herorace == "Half-Elf" ||
+                    herorace == "Tiefling") ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      charisma = value;
+                    },
+                    text: "Your Charisma :",
+                    color: Colors.deepPurple,
+                    textEditingController: _charismacontrrol,
+                    atribute: "+2",
+                    style: TextStyle(
+                      color: Colors.amber.shade900,
+                    ),
+                  ),
+                } else ...{
+                  EnterValueClass(
+                    callback: (value) {
+                      charisma = value;
+                    },
+                    text: "Your Charisma :",
+                    color: Colors.deepPurple,
+                    textEditingController: _charismacontrrol,
+                    atribute: "",
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                },
                 const Divider(height: 30),
                 ElevatedButton(
                   onPressed:
