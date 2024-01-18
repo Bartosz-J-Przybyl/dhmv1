@@ -40,6 +40,7 @@ dependencies:
   cloud_firestore: ^4.14.0
   flutter_staggered_animations: ^1.1.1
   simple_ripple_animation: ^0.0.9
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +67,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/assets/images/d20.png
+    - lib/assets/images/d20bl.png
     - lib/assets/images/sb.png
     - lib/assets/images/rd.png
     - lib/assets/images/spb.png
