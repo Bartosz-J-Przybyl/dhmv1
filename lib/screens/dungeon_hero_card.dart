@@ -3,6 +3,7 @@ import 'package:dhmv1/widgets/hero_atribute.dart';
 
 import 'package:flutter/material.dart';
 
+
 class DungeonHeroCard extends StatefulWidget {
   final String id;
 
@@ -24,10 +25,29 @@ class _DungeonHeroCardState extends State<DungeonHeroCard> {
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return const Text("Loading");
+            return const Center(
+                child: SizedBox(
+              height: 16,
+              width: 16,
+              child: CircularProgressIndicator(),
+            ));
           }
           var userDocument = snapshot.data;
           return Scaffold(
+            appBar: AppBar(),
+            bottomNavigationBar: BottomNavigationBar(
+              items: const [
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.book,
+                    ),
+                    label: ""),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.ac_unit_rounded),
+                  label: "",
+                ),
+              ],
+            ),
             body: Padding(
               padding: const EdgeInsets.all(8),
               child: Column(
