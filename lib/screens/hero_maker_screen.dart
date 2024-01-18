@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:dhmv1/screens/create_hero_screen.dart';
+import 'package:dhmv1/screens/dungeon_hero_card.dart';
 
 import 'package:dhmv1/widgets/hero_card.dart';
 import 'package:flutter/material.dart';
@@ -269,6 +270,17 @@ class _HeroMakerScreenState extends State<HeroMakerScreen> {
                           ),
                         ),
                         child: HeroCard(
+                          ontap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DungeonHeroCard(
+                                  id: snapshot.data!.docs[index].reference.id,
+                                  documents: documents,
+                                ),
+                              ),
+                            );
+                          },
                           documents: documents,
                           image: AssetImage(
                             documents[index]["ClassImage"],

@@ -389,7 +389,7 @@ class _CreateHeroState extends State<CreateHerocreen> {
                   ),
                 },
                 const Divider(height: 30),
-                if (herorace == "Dragonborn" ||herorace == "Human") ...{
+                if (herorace == "Dragonborn" || herorace == "Human") ...{
                   EnterValueClass(
                     callback: (value) {
                       charisma = value;
@@ -451,7 +451,7 @@ class _CreateHeroState extends State<CreateHerocreen> {
                                 "Intelligence": intelligence,
                                 "Wisdom": wisdom,
                                 "Charisma": charisma
-                              });
+                              }).then((value) => null);
 
                               widget.onSave();
 
