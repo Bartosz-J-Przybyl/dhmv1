@@ -289,6 +289,7 @@ class _HeroMakerScreenState extends State<HeroMakerScreen> {
                           text2: documents[index]["HeroName"],
                           text3: documents[index]["Herolvl"],
                           race: documents[index]["RaceImage"],
+                          text4: documents[index]["Race"],
                         ),
                       ),
                     ),

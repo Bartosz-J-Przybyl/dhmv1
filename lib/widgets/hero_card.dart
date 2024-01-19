@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dhmv1/widgets/custom_cliper_second.dart';
 
 import 'package:dhmv1/widgets/custom_clipper.dart';
+import 'package:dhmv1/widgets/light_container.dart';
+import 'package:dhmv1/widgets/shadow_container.dart';
 import 'package:flutter/material.dart';
 
 class HeroCard extends StatelessWidget {
@@ -12,22 +15,22 @@ class HeroCard extends StatelessWidget {
       required this.text2,
       required this.text3,
       required this.race,
-      required this.ontap});
+      required this.ontap,
+      required this.text4});
 
   final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents;
   final AssetImage image;
   final String text;
   final String text2;
   final String text3;
+  final String text4;
   final String race;
-  final  Function() ontap;
+  final Function() ontap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: 
-        ontap
-      ,
+      onTap: ontap,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
@@ -49,7 +52,6 @@ class HeroCard extends StatelessWidget {
                 offset: const Offset(0, 1),
               ),
             ],
-            color: const Color.fromARGB(255, 3, 116, 104),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -99,114 +101,198 @@ class HeroCard extends StatelessWidget {
                       child: ClipPath(
                         clipper: CustomClipperClass(),
                         child: Container(
-                          alignment: Alignment.center,
                           decoration: BoxDecoration(
                             shape: BoxShape.rectangle,
-                            color: Colors.teal,
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(12),
+                            color: const Color.fromARGB(255, 50, 58, 60),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.white.withOpacity(0.1),
+                                blurRadius: 16.0,
+                                offset: const Offset(-6.0, -6.0),
+                              ),
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.4),
+                                offset: const Offset(6.0, 6.0),
+                                blurRadius: 16.0,
+                              )
+                            ],
                           ),
                           width: 350,
                           height: 100,
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: Row(
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      bottom: 0,
+                      child: ClipPath(
+                        clipper: CustomClipperSecondClass(),
+                        child: Container(
+                          width: 100,
+                          height: 100,
+                          color: Colors.lightGreen,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 0),
+                          child: Column(
                             children: [
-                              const Text(
-                                "Class:",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
-                              ),
-                              CircleAvatar(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 36, 34, 34)
-                                        .withOpacity(0.8),
-                                radius: 25,
-                                child: Image(
-                                  image: image,
-                                  // AssetImage(
-                                  //   documents[index]["ClassImage"]
-                                  // ),
-                                  width: 35,
-                                  fit: BoxFit.scaleDown,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Text(
-                                text,
-                                // documents[index]["Class"],
-
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontStyle: FontStyle.italic,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          Column(
-                            children: [
-                              const Text(
-                                "Hero Name:",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                ),
-                              ),
-                              Text(
-                                text2,
-                                // documents[index]["HeroName"],
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          Column(
-                            children: [
-                              const Text(
-                                "Hero Level:",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
-                              ),
                               Text(
                                 text3,
-                                // documents[index]["Herolvl"],
                                 style: const TextStyle(
-                                  color: Colors.white,
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 50, 58, 60),
+                                  fontSize: 15,
                                 ),
                               ),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 3, left: 5),
+                                child: RotationTransition(
+                                  turns: AlwaysStoppedAnimation(-53 / 360),
+                                  child: Text(
+                                    "LVL",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromARGB(255, 50, 58, 60),
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                ),
+                              )
                             ],
-                          )
-                        ],
-                      ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20, left: 5),
+                          child: Column(
+                            children: [
+                              Stack(
+                                children: [
+                                  ClipPath(
+                                    clipper: ShadowClipper(),
+                                    child: const ShadowContainer(
+                                      color: Colors.transparent,
+                                      masure: 60,
+                                    ),
+                                  ),
+                                  ClipPath(
+                                    clipper: HighlightClipper(),
+                                    child: const LightContainer(
+                                      color: Colors.transparent,
+                                      masure: 60,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(left: 5, top: 5),
+                                    child: CircleAvatar(
+                                      backgroundColor:
+                                          const Color.fromARGB(255, 36, 34, 34)
+                                              .withOpacity(0.8),
+                                      radius: 25,
+                                      child: Image(
+                                        image: image,
+                                        width: 35,
+                                        fit: BoxFit.scaleDown,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 0,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20),
+                                child: Row(
+                                  children: [
+                                    const Text(
+                                      " Name:",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                        fontSize: 17,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 5),
+                                    Text(
+                                      text2,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontStyle: FontStyle.italic,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Row(
+                                  children: [
+                                    const Text(
+                                      "Class:",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                        fontSize: 17,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 5),
+                                    Text(
+                                      text,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                        fontStyle: FontStyle.italic,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  const Text(
+                                    "Race:",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      fontSize: 17,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Text(
+                                    text4,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
-              
             ],
           ),
         ),
