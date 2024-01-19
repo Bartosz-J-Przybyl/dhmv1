@@ -92,7 +92,7 @@ class _CreateHeroState extends State<CreateHerocreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 TextFormField(
-                  maxLength: 50,
+                  maxLength: 10,
                   decoration: const InputDecoration(
                     hintText: "Hero Name",
                   ),
@@ -100,7 +100,7 @@ class _CreateHeroState extends State<CreateHerocreen> {
                     if (value == null ||
                         value.isEmpty ||
                         value.trim().length <= 1 ||
-                        value.trim().length > 50) {
+                        value.trim().length > 10) {
                       return "must be between 1 and 50 characters";
                     }
                     return null;
