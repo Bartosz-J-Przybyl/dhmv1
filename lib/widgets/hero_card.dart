@@ -11,20 +11,20 @@ class HeroCard extends StatelessWidget {
       {super.key,
       required this.documents,
       required this.image,
-      required this.text,
-      required this.text2,
-      required this.text3,
-      required this.race,
+      required this.textClass,
+      required this.textHeroName,
+      required this.textHerolvl,
+      required this.textRaceImage,
       required this.ontap,
-      required this.text4});
+      required this.textRace});
 
   final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents;
   final AssetImage image;
-  final String text;
-  final String text2;
-  final String text3;
-  final String text4;
-  final String race;
+  final String textClass;
+  final String textHeroName;
+  final String textHerolvl;
+  final String textRace;
+  final String textRaceImage;
   final Function() ontap;
 
   @override
@@ -86,7 +86,7 @@ class HeroCard extends StatelessWidget {
                           image: DecorationImage(
                               fit: BoxFit.cover,
                               image: Image.network(
-                                race,
+                                textRaceImage,
                               ).image),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(8.0)),
@@ -143,7 +143,7 @@ class HeroCard extends StatelessWidget {
                           child: Column(
                             children: [
                               Text(
-                                text3,
+                                textHerolvl,
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color.fromARGB(255, 50, 58, 60),
@@ -230,7 +230,7 @@ class HeroCard extends StatelessWidget {
                                     ),
                                     const SizedBox(width: 5),
                                     Text(
-                                      text2,
+                                      textHeroName,
                                       style: const TextStyle(
                                         color: Colors.white,
                                         fontStyle: FontStyle.italic,
@@ -254,7 +254,7 @@ class HeroCard extends StatelessWidget {
                                     ),
                                     const SizedBox(width: 5),
                                     Text(
-                                      text,
+                                      textClass,
                                       style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 15,
@@ -276,7 +276,7 @@ class HeroCard extends StatelessWidget {
                                   ),
                                   const SizedBox(width: 5),
                                   Text(
-                                    text4,
+                                    textRace,
                                     style: const TextStyle(
                                       color: Colors.white,
                                       fontStyle: FontStyle.italic,
