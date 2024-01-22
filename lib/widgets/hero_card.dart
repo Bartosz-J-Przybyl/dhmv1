@@ -139,7 +139,7 @@ class HeroCard extends StatelessWidget {
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 0),
+                          padding: const EdgeInsets.only(top: 2, left: 2),
                           child: Column(
                             children: [
                               Text(
@@ -151,7 +151,7 @@ class HeroCard extends StatelessWidget {
                                 ),
                               ),
                               const Padding(
-                                padding: EdgeInsets.only(top: 3, left: 5),
+                                padding: EdgeInsets.only(left: 5),
                                 child: RotationTransition(
                                   turns: AlwaysStoppedAnimation(-53 / 360),
                                   child: Text(
