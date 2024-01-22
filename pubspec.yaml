@@ -41,6 +41,7 @@ dependencies:
   flutter_staggered_animations: ^1.1.1
   simple_ripple_animation: ^0.0.9
   google_fonts: ^6.1.0
+  expandable: ^5.0.1
 
 dev_dependencies:
   flutter_test:
